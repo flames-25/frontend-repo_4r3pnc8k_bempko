@@ -5,31 +5,37 @@ const offerings = [
     title: 'SYSTEMS & ALGORITHMS',
     desc: 'Master data structures, algorithms, OS, and networks to build fast, reliable systems.',
     icon: Cpu,
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop',
   },
   {
     title: 'DATA & DATABASES',
     desc: 'Design schemas, query efficiently, and scale with modern data pipelines.',
     icon: Database,
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop',
   },
   {
     title: 'APPLIED AI & LLMs',
     desc: 'Ship AI features with embeddings, RAG, fine-tuning, and evaluation.',
     icon: Bot,
+    image: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1600&auto=format&fit=crop',
   },
   {
     title: 'FULL-STACK BUILDING',
     desc: 'From APIs to frontends — ship products end-to-end with best practices.',
     icon: Terminal,
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop',
   },
   {
     title: 'ML FOUNDATIONS',
     desc: 'Math, optimization, and model intuition that make AI systems work.',
     icon: Brain,
+    image: 'https://images.unsplash.com/photo-1542639019-31a734fb5f2a?q=80&w=1600&auto=format&fit=crop',
   },
   {
     title: 'LAUNCH & IMPACT',
     desc: 'Demo days, capstones, and real users — focus on outcomes, not theory alone.',
     icon: Rocket,
+    image: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1600&auto=format&fit=crop',
   },
 ]
 
@@ -51,21 +57,38 @@ export default function SchoolCSAI() {
 
           {/* Right: 2/3 width with tiles */}
           <div className="md:col-span-2 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {offerings.map(({ title, desc, icon: Icon }) => (
+            {offerings.map(({ title, desc, icon: Icon, image }) => (
               <div
                 key={title}
-                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:shadow-xl"
+                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white/0 p-0 shadow-sm"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50" />
-                <div className="relative z-10">
+                {/* Background image */}
+                <div className="absolute inset-0">
+                  <img
+                    src={image}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Overlay for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/60" />
+                  {/* Subtle tinted hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20" />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 p-6">
                   <div className="flex items-center justify-between">
-                    <div className="h-10 w-10 rounded-xl bg-gray-900 text-white flex items-center justify-center shadow-sm">
+                    <div className="h-10 w-10 rounded-xl bg-white/10 text-white flex items-center justify-center shadow-sm backdrop-blur-sm ring-1 ring-white/20">
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
-                  <h3 className="mt-4 text-sm font-bold tracking-wide text-gray-900">{title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{desc}</p>
+                  <h3 className="mt-4 text-sm font-bold tracking-wide text-white">{title}</h3>
+                  <p className="mt-2 text-sm text-white/85">{desc}</p>
                 </div>
+
+                {/* Focus ring on hover */}
+                <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 ring-offset-0 transition-all group-hover:ring-2 group-hover:ring-white/40" />
               </div>
             ))}
           </div>
