@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import SchoolCSAI from './components/SchoolCSAI'
 import Programs from './components/Programs'
 import Outcomes from './components/Outcomes'
 import Admissions from './components/Admissions'
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <SchoolCSAI />
         <Programs />
         <Outcomes />
         <Admissions />
